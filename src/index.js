@@ -31,7 +31,6 @@ module.exports = function getZerosCount(number, base) {
         return multipliers;
     };
 
-
     const findMultipliersEntries = function (num, array) {
         let divisionRest = num;
         const entriesMultipliers = {};
@@ -41,8 +40,12 @@ module.exports = function getZerosCount(number, base) {
                 let temp = 1;
 
                 if (n > 1) {
-                    temp = n / multiplier;
-                    entriesMultipliers [multiplier] = entriesMultipliers [multiplier] ? entriesMultipliers [multiplier] + 1 : 1;
+                    if (n % multiplier === 0) {
+                        temp = n / multiplier;
+                        entriesMultipliers [multiplier] = entriesMultipliers [multiplier] ? entriesMultipliers [multiplier] + 1 : 1;
+                    } else {
+                        temp = n;
+                    }
                 }
 
                 return temp;
